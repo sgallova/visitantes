@@ -6,14 +6,16 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1',
 mongoose.connection.on("error", function(e) { console.error(e); });
 
 var schema=mongoose.Schema({
-    date:{type: Date, default: Date.now},
+    date:{type: Date, default: Date.now()},
     name: String
 });
 
 var Visitor= mongoose.model("Visitor",schema);
 
-app.get('/:name',(req,res) =>{
-    let nombre = req.params.name || 'Anónimo';
+app.get('/',(req,res) =>{
+    
+    let nombre = req.query.name || 'Anónimo';
+    
     Visitor.create(
         {name:nombre}, function(err) {
             if (err) return console.error(err)
