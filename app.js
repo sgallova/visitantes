@@ -6,17 +6,17 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1',
 mongoose.connection.on("error", function(e) { console.error(e); });
 
 var schema=mongoose.Schema({
-    date:{type: Date, default: Date.now()},
+    date:{type: Date, default: Date.now},
     name: String
 });
 
 var Visitor= mongoose.model("Visitor",schema);
 
-app.get('/',(req,res) =>{
+app.get('/', async (req,res) =>{
     
     let nombre = req.query.name || 'Anónimo';
     
-    Visitor.create(
+    await Visitor.create(
         {name:nombre}, function(err) {
             if (err) return console.error(err)
         });
