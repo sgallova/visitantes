@@ -44,7 +44,7 @@ app.get('/', async (req,res) =>{
             $tagValue+=`<tr><td>${element._id}</td><td>${element.name}</td><td>${element.count}</td></tr>`
         });
 
-      res.send(`<table><tr><th>Id</th><th>Name</th><th>Visits</th></tr>${$tagValue}</table>`)
+      res.send(`<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></thead></tr>${$tagValue}</table>`)
 
     });
 
