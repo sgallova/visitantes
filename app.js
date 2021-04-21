@@ -34,7 +34,7 @@ app.get('/', async (req,res) =>{
         res.send(`<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>${$tagValue}</table>`)
 
     }catch(err){
-      return err;
+      console.error(err);
     }
 
 });
