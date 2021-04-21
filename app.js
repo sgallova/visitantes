@@ -14,7 +14,7 @@ var Visitor= mongoose.model("Visitor",schema);
 
 app.get('/', async (req,res) =>{
 
-    let $tagValue;
+    let $tagValue='';
     let nombre = req.query.name || 'Anónimo';
 
     try{
